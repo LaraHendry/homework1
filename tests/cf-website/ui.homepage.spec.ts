@@ -1,5 +1,4 @@
 import { test, expect } from '../base';
-import { HomePage } from '../helpers/homepage';
 
 
 test.describe('Smoke check the CreateFuture website UI', () => {
