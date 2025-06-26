@@ -23,8 +23,6 @@ export class HomePage {
   readonly thirdBanner: Locator;
   readonly fourthBanner: Locator;
 
-  readonly aboutMenuContainer: Locator;
-
   constructor(page: Page) {
     this.page = page;
 
@@ -42,7 +40,7 @@ export class HomePage {
     // About tab page names
     this.whoWeAreNav = page.getByRole("menuitem", { name: "Who We Are" });
     this.missionsAndValuesNav = page.getByRole("menuitem", {
-      name: "Missions & Values",
+      name: "Mission & Values",
     });
     this.aiEnablementNav = page.getByRole("menuitem", {
       name: "Our AI Enablement Journey",
@@ -66,8 +64,6 @@ export class HomePage {
       .locator("div")
       .first();
 
-      // Using selector to maintain hover state to expand upper nav items
-      this.aboutMenuContainer = this.aboutNav.locator('+ ul[role="menu"].hs-menu-children-wrapper');
   }
 
     // Go to homepage
@@ -91,24 +87,24 @@ export class HomePage {
         await subNavItem.waitFor({ state: 'visible', timeout: 5000 });
     }
 
-    // Expand About tab
-    async expandAbout() {
-        this.expandNavItemHover(this.aboutNav, this.whoWeAreNav);
+    // Expand tab
+    async expandTab(tabName: Locator, subTabName: Locator) {
+        this.expandNavItemHover(tabName, subTabName);
     }
 
     // Click into sub menu items for About tab
     async openWhoWeArePage() {
-        this.expandAbout();
+        this.expandTab(this.aboutNav, this.whoWeAreNav);
         this.whoWeAreNav.click();
     }
 
     async openMissionsAndValuesPage() {
-        this.expandAbout();
+        this.expandTab(this.aboutNav, this.missionsAndValuesNav);
         this.missionsAndValuesNav.click();
     }
 
     async openAiEnablementPage() {
-        this.expandAbout();
+        this.expandTab(this.aboutNav, this.aiEnablementNav);
         this.aiEnablementNav.click();
     }
 }

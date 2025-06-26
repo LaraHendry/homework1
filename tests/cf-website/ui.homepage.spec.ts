@@ -23,15 +23,15 @@ test.describe("Smoke check the CreateFuture website UI", () => {
     const page = homepage.page;
 
     await test.step("Check 'About' tab", async () => {
-      await expect(homepage.aboutNav).toBeVisible();
-      await homepage.expandAbout();
+     await expect(homepage.aboutNav).toBeVisible();
+      await homepage.expandTab(homepage.aboutNav, homepage.whoWeAreNav);
       await expect(homepage.whoWeAreNav).toBeVisible();
-      await homepage.expandAbout();
+      await homepage.expandTab(homepage.aboutNav, homepage.missionsAndValuesNav);
       await expect(homepage.missionsAndValuesNav).toBeVisible();
-      await homepage.expandAbout();
+      await homepage.expandTab(homepage.aboutNav, homepage.aiEnablementNav);
       await expect(homepage.aiEnablementNav).toBeVisible();
-
-    });
+      
+  });
   });
 
   test("Open homepage and check horizontal scroll banner", async ({
@@ -46,4 +46,5 @@ test.describe("Smoke check the CreateFuture website UI", () => {
       await expect(homepage.secondBanner).toBeVisible();
     });
   });
-});
+
+  });
