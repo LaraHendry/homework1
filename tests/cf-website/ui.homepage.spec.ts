@@ -1,16 +1,16 @@
 import { test, expect } from "../base";
 
 test.describe("Smoke check the CreateFuture website UI", () => {
-  test.beforeEach(async ({ homepage }) => {
+
+    test.beforeEach(async ({ homepage }) => {
     const page = homepage.page;
     await homepage.goToHomePage();
-    //await expect(homepage.getCookieConsentMessage()).toBeVisible();
     await page.getByRole("button", { name: "Decline" }).click();
   });
 
-  test("Open homepage and decline cookies", async ({ homepage }) => {
+  test("Open homepage and check logo", async ({ homepage }) => {
     const page = homepage.page;
-
+    
     await test.step("Check CreateFuture logo", async () => {
       await expect(
         page.getByRole("link", { name: "CreateFuture Logo black text" }),
@@ -22,14 +22,7 @@ test.describe("Smoke check the CreateFuture website UI", () => {
   test("Open homepage and check upper UI", async ({ homepage, commonFunctions }) => {
     const page = homepage.page;
 
-    await test.step("Check CreateFuture logo", async () => {
-      await expect(
-        page.getByRole("link", { name: "CreateFuture Logo black text" }),
-      ).toBeVisible();
-      await expect(homepage.aboutNav).toBeVisible();
-    });
-
-    await test.step("Check About tab", async () => {
+    await test.step("Check 'About' tab", async () => {
       await expect(homepage.aboutNav).toBeVisible();
       await homepage.expandAbout();
       await expect(homepage.whoWeAreNav).toBeVisible();
