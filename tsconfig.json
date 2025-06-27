@@ -1,28 +1,28 @@
 // tsconfig.json (at the root of your project)
 {
-    "compilerOptions": {
-      "target": "ESNext", // or "ES2021", "ES2020", "ES6" based on your Node.js version
-      "module": "CommonJS", // or "ESNext" if you're using ESM modules (requires "type": "module" in package.json)
-      "lib": ["ESNext", "DOM"], // Include DOM for browser-related types
-      "esModuleInterop": true, // Recommended for better interoperability with CommonJS/ESM modules
-      "forceConsistentCasingInFileNames": true,
-      "strict": true, // Enable all strict type-checking options
-      "skipLibCheck": true, // Skip type checking of all .d.ts files. Can speed up compilation.
-      "resolveJsonModule": true, // Allow importing .json files
-      "outDir": "./dist", // Output directory for compiled JavaScript (optional for Playwright)
-      "baseUrl": ".", // Important for path mapping
-      "paths": {
-        // Example path mapping:
-        // "@utils/*": ["./src/utils/*"],
-        // "@pages/*": ["./tests/pages/*"],
-        // "@fixtures/*": ["./tests/fixtures/*"]
-      }
-    },
-    "include": [
-      "playwright.config.ts", // Make sure your Playwright config is included
-      "tests/**/*.ts",       // Include all your test files
-      "src/**/*.ts",         // If you have source code in 'src'
-      "*.ts"                 // Catch any top-level .ts files
-    ],
-    "exclude": ["node_modules"]
-  }
+  "compilerOptions": {
+    "target": "ESNext", // or "ES2021", "ES2020", "ES6" based on your Node.js version
+    "module": "CommonJS", // or "ESNext" if you're using ESM modules (requires "type": "module" in package.json)
+    "lib": ["ESNext", "DOM"], // Include DOM for browser-related types
+    "esModuleInterop": true, // Recommended for better interoperability with CommonJS/ESM modules
+    "forceConsistentCasingInFileNames": true,
+    "strict": true, // Enable all strict type-checking options
+    "skipLibCheck": true, // Skip type checking of all .d.ts files. Can speed up compilation.
+    "resolveJsonModule": true, // Allow importing .json files
+    "outDir": "./dist", // Output directory for compiled JavaScript (optional for Playwright)
+    "baseUrl": ".", // Important for path mapping
+    "paths": {
+      // Example path mapping:
+      // "@utils/*": ["./src/utils/*"],
+      // "@pages/*": ["./tests/pages/*"],
+      // "@fixtures/*": ["./tests/fixtures/*"]
+    }
+  },
+  "include": [
+    "playwright.config.ts", // Make sure your Playwright config is included
+    "tests/**/*.ts", // Include all your test files
+    "src/**/*.ts", // If you have source code in 'src'
+    "*.ts" // Catch any top-level .ts files
+  ],
+  "exclude": ["node_modules"]
+}
