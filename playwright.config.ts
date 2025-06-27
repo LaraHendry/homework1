@@ -30,7 +30,9 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     headless: true, // Typically true in CI
-    trace: "on-first-retry"
+    trace: "on-first-retry",
+    screenshot: 'on', // Also crucial for visual debugging
+    video: 'on-first-retry'
   },
   timeout: 60 * 1000,
 
