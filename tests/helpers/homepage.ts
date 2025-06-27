@@ -23,6 +23,8 @@ export class HomePage {
   readonly thirdBanner: Locator;
   readonly fourthBanner: Locator;
 
+  readonly cookieMenu: Locator;
+
   constructor(page: Page) {
     this.page = page;
 
@@ -64,6 +66,10 @@ export class HomePage {
       .locator("div")
       .first();
 
+      // Cookie menu container
+
+      this.cookieMenu = page.locator('#hs-eu-cookie-confirmation-inner');
+
   }
 
     // Go to homepage
@@ -72,9 +78,14 @@ export class HomePage {
         await this.page.goto("/");
     }
 
-    // Get cookie consent message locator
-    async getCookieConsentMessage() {
-        return this.page.getByText('This website stores cookies.');
+    // Return cookie consent message locator
+    getCookieConsentMessage(): Locator {
+        return this.page.getByText('This website stores cookies on your computer.');
+    }
+    // Wait for cookie consent message locator to be visible
+    async viewCookieConsentMessage(){
+        await this.cookieMenu.waitFor({ state: 'visible', timeout: 2000 });
+        
     }
 
     /**

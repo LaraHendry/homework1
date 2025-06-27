@@ -5,6 +5,8 @@ test.describe("Smoke check the CreateFuture website UI", () => {
     test.beforeEach(async ({ homepage }) => {
     const page = homepage.page;
     await homepage.goToHomePage();
+    await homepage.viewCookieConsentMessage();
+    await expect(homepage.getCookieConsentMessage()).toBeVisible();
     await page.getByRole("button", { name: "Decline" }).click();
   });
 
