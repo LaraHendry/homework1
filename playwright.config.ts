@@ -29,7 +29,8 @@ export default defineConfig({
     baseURL: "https://createfuture.com/",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    headless: true, // Typically true in CI
+    trace: "on-first-retry"
   },
   timeout: 60 * 1000,
 
