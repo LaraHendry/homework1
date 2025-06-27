@@ -6,7 +6,7 @@ test.describe("Smoke check the CreateFuture website UI", () => {
     await homepage.goToHomePage();
     //await homepage.viewCookieConsentMessage();
    // await expect(homepage.getCookieConsentMessage()).toBeVisible();
-    await page.getByRole("button", { name: "Decline" }).click();
+  //  await page.getByRole("button", { name: "Decline" }).click();
   
     await test.step("Check CreateFuture logo", async () => {
       await expect(
