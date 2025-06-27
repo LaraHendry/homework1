@@ -68,7 +68,7 @@ export class HomePage {
 
       // Cookie menu container
 
-      this.cookieMenu = page.locator('#hs-eu-cookie-confirmation-inner');
+      this.cookieMenu = page.locator('#hs-eu-cookie-confirmation');
 
   }
 
