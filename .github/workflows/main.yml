@@ -1,0 +1,45 @@
+name: Scheduled Playwright E2E Tests
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC (midnight)
+    # Check https://crontab.guru/ for cron syntax help.
+    - cron: '30 18 * * 1-5'
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  playwright-e2e-tests:
+    timeout-minutes: 60 # Set a maximum runtime for the job
+    runs-on: ubuntu-latest # Or a different runner, e.g., macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20 # Use a Playwright-compatible Node.js version (LTS)
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      # You can add specific flags here, e.g., --project=chromium
+      # --workers=1 for less parallelism on resource-constrained runners
+      run: npx playwright test
+
+    - name: Upload Playwright Report & Traces
+      uses: actions/upload-artifact@v4
+      if: always() # Uploads even if tests fail
+      with:
+        name: playwright-results-${{ github.run_id }} # Unique name for artifacts
+        path: |
+          playwright-report/
+          test-results/ # Contains traces, videos, screenshots
+        retention-days: 14 # Keep artifacts for 14 days
