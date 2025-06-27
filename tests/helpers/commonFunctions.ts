@@ -1,4 +1,4 @@
-import {expect, Page} from '@playwright/test';
+import {expect, Page, Locator} from '@playwright/test';
 
 export class CommonFunctions {
     readonly page: Page;
@@ -12,9 +12,10 @@ export class CommonFunctions {
      * @param page page
      * @param byLocator locator, selector, test attribute
      */
-    async areLocatorsVisible(byLocator: string[]) {
+    async areLocatorsVisible(byLocator: Locator[]) {
         for (const locator of byLocator) {
-            await expect(this.page.locator(locator)).toBeVisible();
+            await expect(locator).toBeVisible();
+            
         }
 
     }

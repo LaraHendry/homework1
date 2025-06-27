@@ -26,12 +26,15 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
       
   }); 
 
-  test("Check dynamic horizontal banners", async ({ homepage }) => {
+  test("Check dynamic horizontal Slides", async ({ homepage, commonFunctions }) => {
     const page = homepage.page;
-    const bannerTimerMs = 1000;
-      await expect(homepage.firstBanner).toBeVisible();
-      await page.waitForTimeout(bannerTimerMs);
-      await expect(homepage.secondBanner).toBeVisible();
+    //const SlideTimerMs = 1000;
+    const slides = [homepage.firstSlide, homepage.secondSlide, homepage.thirdSlide, homepage.fourthSlide];
+    const slideButtons = [homepage.firstSlideLMButton, homepage.secondSlideDLButton, homepage.thirdSlideLMButton, homepage.fourthSlideLMButton];
+    
+    await commonFunctions.areLocatorsVisible(slides);
+    await commonFunctions.areLocatorsVisible(slideButtons);
+
   });
 });
   
