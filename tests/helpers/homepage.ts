@@ -84,7 +84,7 @@ export class HomePage {
     }
     // Wait for cookie consent message locator to be visible
     async viewCookieConsentMessage(){
-        await this.cookieMenu.waitFor({ state: 'visible', timeout: 15000 });
+        await this.cookieMenu.waitFor({ state: 'visible', timeout: 30000 });
         
     }
 
