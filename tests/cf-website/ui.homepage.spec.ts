@@ -7,7 +7,7 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
     await homepage.goToHomePage();
   });
  
-  test("Check CreateFuture logo", async ({ homepage, commonFunctions }) => {
+  test("Check CreateFuture logo", async ({ homepage }) => {
     const page = homepage.page;
 
       await expect(
@@ -16,7 +16,7 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
       await expect(homepage.aboutNav).toBeVisible();
     });
 
-  test("Check 'About' tab", async ({ homepage, commonFunctions }) => {
+  test("Check 'About' tab", async ({ homepage }) => {
     const page = homepage.page;
       await expect(homepage.aboutNav).toBeVisible();
       await homepage.expandTab(homepage.aboutNav, homepage.whoWeAreNav);
@@ -26,7 +26,7 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
       
   }); 
 
-  test("Check dynamic horizontal banners", async ({ homepage, commonFunctions }) => {
+  test("Check dynamic horizontal banners", async ({ homepage }) => {
     const page = homepage.page;
     const bannerTimerMs = 1000;
       await expect(homepage.firstBanner).toBeVisible();
