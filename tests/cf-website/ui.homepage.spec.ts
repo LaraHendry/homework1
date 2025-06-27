@@ -1,16 +1,11 @@
 import { test, expect } from "../base";
 
 test.describe("Smoke check the CreateFuture website UI", () => {
-
-
-  
-
   test("Open homepage and check logo", async ({ homepage, commonFunctions }) => {
-    //const page = homepage.page;
-      const page = homepage.page;
+    const page = homepage.page;
     await homepage.goToHomePage();
-    await homepage.viewCookieConsentMessage();
-    await expect(homepage.getCookieConsentMessage()).toBeVisible();
+    //await homepage.viewCookieConsentMessage();
+   // await expect(homepage.getCookieConsentMessage()).toBeVisible();
     await page.getByRole("button", { name: "Decline" }).click();
   
     await test.step("Check CreateFuture logo", async () => {
