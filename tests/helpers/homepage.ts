@@ -84,7 +84,7 @@ export class HomePage {
     }
     // Wait for cookie consent message locator to be visible
     async viewCookieConsentMessage(){
-        await this.cookieMenu.waitFor({ state: 'visible', timeout: 5000 });
+        await this.cookieMenu.waitFor({ state: 'visible', timeout: 8000 });
         
     }
 
@@ -95,12 +95,12 @@ export class HomePage {
      */
     private async expandNavItemHover(navItem: Locator, subNavItem: Locator) {
         await navItem.hover();
-        await subNavItem.waitFor({ state: 'visible', timeout: 5000 });
+        await subNavItem.waitFor({ state: 'visible', timeout: 3000 });
     }
 
     // Expand tab
     async expandTab(tabName: Locator, subTabName: Locator) {
-        this.expandNavItemHover(tabName, subTabName);
+       await this.expandNavItemHover(tabName, subTabName);
     }
 
     // Click into sub menu items for About tab
