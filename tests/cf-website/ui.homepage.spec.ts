@@ -5,8 +5,6 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
   test.beforeEach(async ({homepage}) => {
     const page = homepage.page;
     await homepage.goToHomePage();
-    await expect(page.getByRole('button', { name: 'Decline' })).toBeVisible();
-    await page.getByRole('button', { name: 'Decline' }).click();
   });
  
   test("Check CreateFuture logo", async ({ homepage }) => {
