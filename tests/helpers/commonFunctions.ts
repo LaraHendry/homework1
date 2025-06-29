@@ -40,7 +40,7 @@ export class CommonFunctions {
                   .toHaveClass(/swiper-slide-active/);
 
             console.log(`Slide ${slideNumber} is active (has 'swiper-slide-active' class).`);
-            this.page.waitForTimeout(slideTransitionTimeoutMs)
+            await this.page.waitForTimeout(slideTransitionTimeoutMs)
 
         }
         return expectedSlideLocators[expectedSlideLocators.length - 1];
