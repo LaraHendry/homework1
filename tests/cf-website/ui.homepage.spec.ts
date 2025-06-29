@@ -5,6 +5,7 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
   test.beforeEach(async ({homepage}) => {
     const page = homepage.page;
     await homepage.goToHomePage();
+    await page.getByRole('button', { name: 'Decline' }).click();
   });
  
   test("Check CreateFuture logo", async ({ homepage }) => {
@@ -28,12 +29,10 @@ test.describe("Smoke check the CreateFuture website homepage", () => {
 
   test("Check dynamic horizontal Slides", async ({ homepage, commonFunctions }) => {
     const page = homepage.page;
-    //const SlideTimerMs = 1000;
+    const SlideTimerMs = 1000;
     const slides = [homepage.firstSlide, homepage.secondSlide, homepage.thirdSlide, homepage.fourthSlide];
-    const slideButtons = [homepage.firstSlideLMButton, homepage.secondSlideDLButton, homepage.thirdSlideLMButton, homepage.fourthSlideLMButton];
-    
-    await commonFunctions.areLocatorsVisible(slides);
-    await commonFunctions.areLocatorsVisible(slideButtons);
+
+    await commonFunctions.waitForNewBannerSlide(slides, SlideTimerMs);
 
   });
 });

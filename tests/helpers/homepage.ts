@@ -69,22 +69,10 @@ export class HomePage {
     this.goToFourthSlideButton = page.getByRole('button', { name: 'Go to slide 4' });
 
     // Slide locators
-    this.firstSlide = page
-      .getByRole("group", { name: "1 /" })
-      .locator("div")
-      .first();
-    this.secondSlide = page
-      .getByRole("group", { name: "2 /" })
-      .locator("div")
-      .first();
-    this.thirdSlide = page
-      .getByRole("group", { name: "3 /" })
-      .locator("div")
-      .first();
-    this.fourthSlide = page
-      .getByRole("group", { name: "4 /" })
-      .locator("div")
-      .first();
+    this.firstSlide = page.locator('div.swiper-slide[data-swiper-slide-index="0"]');
+    this.secondSlide = page.locator('div.swiper-slide[data-swiper-slide-index="1"]');
+    this.thirdSlide = page.locator('div.swiper-slide[data-swiper-slide-index="2"]');
+    this.fourthSlide = page.locator('div.swiper-slide[data-swiper-slide-index="3"]');
 
       // CF slides Learn More or Download buttons
 
@@ -144,33 +132,6 @@ export class HomePage {
     async openAiEnablementPage() {
         this.expandTab(this.aboutNav, this.aiEnablementNav);
         this.aiEnablementNav.click();
-    }
-   
-    /**
-     * Retrieves the Locator for the currently active Swiper slide.
-     * @returns Locator for the active slide
-     */
-    async getActiveSlide(): Promise<Locator> {
-        // Swiper typically uses 'swiper-slide-active' class for the current slide.
-        // Or sometimes 'aria-current="true"'
-        return this.page.locator('.swiper-slide.swiper-slide-active');
-        // If your active slide is identifiable by aria-label:
-        // return this.swiperSlides.filter({ 'aria-current': 'true' });
-    }
-
-    /**
-     * Asserts that a new banner slide becomes active after a given delay.
-     * This relies on the `swiper-slide-active` class changing.
-     * @param newSlideContent The unique text or heading from the slide that is currently active.
-     * @param timeout The maximum time to wait for a new slide to appear.
-     * @returns Locator for the new active slide.
-     */
-    async waitForNewBannerSlide(newSlideContent: string, timeout: number = 6000): Promise<Locator> {
-  
-        const activeSlide = this.getActiveSlide()
-        await expect(activeSlide).toContain(newSlideContent);
-        return activeSlide;
-
     }
 
 }
