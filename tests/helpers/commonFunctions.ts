@@ -37,9 +37,10 @@ export class CommonFunctions {
             const slideLocator = expectedSlideLocators[i];
             const slideNumber = i + 1; // For logging/debugging
             await expect(slideLocator)
-                  .toHaveClass(/swiper-slide-active/, {timeout: slideTransitionTimeoutMs});
+                  .toHaveClass(/swiper-slide-active/);
 
             console.log(`Slide ${slideNumber} is active (has 'swiper-slide-active' class).`);
+            this.page.waitForTimeout(slideTransitionTimeoutMs)
 
         }
         return expectedSlideLocators[expectedSlideLocators.length - 1];
